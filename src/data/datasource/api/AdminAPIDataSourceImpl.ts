@@ -26,20 +26,6 @@ export default class AdminAPIDataSourceImpl implements AdminDataSource {
                 }))
                 return resp
             }
-
-            // if (resp.status === 'OK') {
-            //     if (resp.data) {
-            //         return resp.data.map((item: AdminAPIEntity): Admin => ({
-            //             id: item.id,
-            //             name: item.name,
-            //         }))
-            //     }
-            //     return resp.data
-            // }
-            // else {
-            //     console.log(resp.status)
-            //     throw Error(`[requestClient] Request failed with reason -  ${response}`)
-            // }
         }],
     })
 

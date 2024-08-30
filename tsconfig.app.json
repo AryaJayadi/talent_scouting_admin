@@ -30,6 +30,7 @@
         "./src/*"
       ]
     },
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src"]
 }
