@@ -6,6 +6,8 @@ import {Root} from "@/presentation/template/Root.tsx";
 import {LoginPage} from "@/presentation/auth/LoginPage.tsx";
 import {AuthLayout} from "@/presentation/template/AuthLayout.tsx";
 import {HomePage} from "@/presentation/home/HomePage.tsx";
+import {InsertCompanyPage} from "@/presentation/company/InsertCompanyPage.tsx";
+import {BaseLayout} from "@/presentation/template/BaseLayout.tsx";
 
 const router = createBrowserRouter([
     {
@@ -14,7 +16,22 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "",
-                element: <HomePage />,
+                element: <BaseLayout />,
+                children:[
+                    {
+                        path: "",
+                        element: <HomePage />
+                    },
+                    {
+                        path: "company",
+                        children: [
+                            {
+                                path: "insert",
+                                element: <InsertCompanyPage />,
+                            }
+                        ]
+                    },
+                ]
             },
             {
                 path: "auth",
