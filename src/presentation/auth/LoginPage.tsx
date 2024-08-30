@@ -29,11 +29,11 @@ export const LoginPage = () => {
                     <div className="grid w-full items-center gap-4">
                         <div className="flex flex-col space-y-1.5">
                             <Label htmlFor="name">Name</Label>
-                            <Input id="name" placeholder="Name" ref={nameRef}/>
+                            <Input id="name" placeholder="Name" ref={nameRef} type="text"/>
                         </div>
                         <div className="flex flex-col space-y-1.5">
                             <Label htmlFor="password">Password</Label>
-                            <Input id="password" placeholder="Password" ref={passRef}/>
+                            <Input id="password" placeholder="Password" ref={passRef} type="password"/>
                         </div>
                     </div>
                 </form>

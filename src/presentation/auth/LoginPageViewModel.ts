@@ -25,6 +25,13 @@ export default function HomePageViewModel() {
         if(!nameRef.current || !passRef.current) {
             toast({
                 title: "Login failed!",
+                description: `Failed to bind refs!`,
+            });
+            return;
+        }
+        if(nameRef.current['value'] == "" || passRef.current['value'] == "") {
+            toast({
+                title: "Login failed!",
                 description: `Please make sure to fill all fields!`,
             });
             return;
@@ -33,6 +40,7 @@ export default function HomePageViewModel() {
         const pass: string = passRef.current['value'];
 
         const admin = await loginAdmin(name, pass);
+        console.log(admin);
         toast({
             title: "Login success!",
             description: `Welcome, ${admin.name}!`,

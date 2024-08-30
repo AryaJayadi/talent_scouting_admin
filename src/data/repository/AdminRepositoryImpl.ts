@@ -1,6 +1,7 @@
 import {AdminRepository} from "@/domain/repository/AdminRepository.ts";
 import {Admin} from "@/domain/model/Admin.ts";
 import AdminDataSource from "@/data/datasource/AdminDataSource.ts";
+import {AdminLoginAdminAPIRequest} from "@/data/datasource/api/request/AdminLoginAdminAPIRequest.ts";
 
 export class AdminRepositoryImpl implements AdminRepository {
     datasource: AdminDataSource;
@@ -13,8 +14,8 @@ export class AdminRepositoryImpl implements AdminRepository {
         return this.datasource.getAdmins();
     }
 
-    loginAdmin(name: string, password: string): Promise<Admin> {
-        return this.datasource.login(name, password);
+    loginAdmin(data: AdminLoginAdminAPIRequest): Promise<Admin> {
+        return this.datasource.login(data);
     }
 
 }
