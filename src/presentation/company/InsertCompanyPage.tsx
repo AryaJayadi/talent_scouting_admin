@@ -30,9 +30,13 @@ export const InsertCompanyPage = () => {
                                 <Label htmlFor="name">Name</Label>
                                 <Input id="name" placeholder="Name" ref={nameRef} type="text"/>
                             </div>
+                            {/*<div className="grid w-full max-w-sm items-center gap-1.5">*/}
+                            {/*    <Label htmlFor="picture">Picture</Label>*/}
+                            {/*    <Input id="picture" type="file" className="cursor-pointer" ref={picRef}/>*/}
+                            {/*</div>*/}
                             <div className="grid w-full max-w-sm items-center gap-1.5">
                                 <Label htmlFor="picture">Picture</Label>
-                                <Input id="picture" type="file" className="cursor-pointer" ref={picRef}/>
+                                <Input id="picture" placeholder="Logo URL" type="url" className="cursor-pointer" ref={picRef}/>
                             </div>
                             <div className="grid w-full gap-1.5">
                                 <Label htmlFor="description">Description</Label>
