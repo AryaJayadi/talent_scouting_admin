@@ -1,6 +1,7 @@
 import {Company} from "@/domain/model/Company.ts";
 import {CompanyRepository} from "@/domain/repository/CompanyRepository.ts";
 import {CompanyAPIEntity} from "@/data/datasource/api/entity/CompanyAPIEntity.ts";
+import {CompanyInsertCompanyAPIRequest} from "@/data/datasource/api/request/CompanyInsertCompanyAPIRequest.ts";
 
 export interface InsertCompanyUseCase {
     invoke: (data: CompanyAPIEntity) => Promise<Company>
@@ -13,7 +14,7 @@ export class InsertCompany implements InsertCompanyUseCase {
         this.companyRepo = _companyRepo;
     }
 
-    invoke(data: CompanyAPIEntity): Promise<Company> {
+    invoke(data: CompanyInsertCompanyAPIRequest): Promise<Company> {
         return this.companyRepo.insertCompany(data);
     }
 }

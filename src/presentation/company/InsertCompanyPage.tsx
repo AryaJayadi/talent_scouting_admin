@@ -10,6 +10,9 @@ export const InsertCompanyPage = () => {
         nameRef,
         descRef,
         picRef,
+        emailRef,
+        passRef,
+        salaryRangeRef,
         locRef,
         handleSubmit,
     } = useViewModel()
@@ -36,8 +39,20 @@ export const InsertCompanyPage = () => {
                                 <Textarea placeholder="Type your description here." ref={descRef} id="message"/>
                             </div>
                             <div className="flex flex-col space-y-1.5">
-                                <Label htmlFor="password">Location</Label>
-                                <Input id="password" placeholder="Password" ref={locRef} type="text"/>
+                                <Label htmlFor="email">Email</Label>
+                                <Input id="email" placeholder="Email" ref={emailRef} type="email"/>
+                            </div>
+                            <div className="flex flex-col space-y-1.5">
+                                <Label htmlFor="password">Password</Label>
+                                <Input id="password" placeholder="Password" ref={passRef} type="password"/>
+                            </div>
+                            <div className="flex flex-col space-y-1.5">
+                                <Label htmlFor="salaryRange">Salary Range</Label>
+                                <Input id="salaryRange" placeholder="Salary Range" ref={salaryRangeRef} type="text"/>
+                            </div>
+                            <div className="flex flex-col space-y-1.5">
+                                <Label htmlFor="location">Location</Label>
+                                <Input id="location" placeholder="Location" ref={locRef} type="text"/>
                             </div>
                         </div>
                     </form>

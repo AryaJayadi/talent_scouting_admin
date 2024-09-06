@@ -1,7 +1,7 @@
 import CompanyDataSource from "@/data/datasource/CompanyDataSource.ts";
 import {Company} from "@/domain/model/Company.ts";
 import axios from "axios";
-import {CompanyAPIEntity} from "@/data/datasource/api/entity/CompanyAPIEntity.ts";
+import {CompanyInsertCompanyAPIRequest} from "@/data/datasource/api/request/CompanyInsertCompanyAPIRequest.ts";
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -75,7 +75,7 @@ export default class CompanyAPIDataSourceImpl implements CompanyDataSource {
         }
     }
 
-    async save(company: CompanyAPIEntity): Promise<Company> {
+    async save(company: CompanyInsertCompanyAPIRequest): Promise<Company> {
         try {
             const response = await this.axiosInstance({
                 method: "POST",

@@ -3,5 +3,8 @@ export interface CompanyAPIEntity {
     name: string;
     logoUrl: string;
     description: string;
+    email: string;
+    password: string;
+    salaryRange: string;
     location: string;
 }
