@@ -37,7 +37,7 @@ export default function InsertCompanyPageViewModel() {
         const salaryRange = salaryRangeRef.current['value'];
         const location = locRef.current['value'];
 
-        await insertCompany(name, desc, pic, email, pass, salaryRange, location);
+        await insertCompany(name, pic, desc, email, pass, salaryRange, location);
         toast({
             title: "Success insert company!",
             description: `insert company: ${name}`,
@@ -54,8 +54,8 @@ export default function InsertCompanyPageViewModel() {
 
     return {
         nameRef,
-        descRef,
         picRef,
+        descRef,
         emailRef,
         passRef,
         salaryRangeRef,
