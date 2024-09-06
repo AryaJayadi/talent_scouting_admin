@@ -37,7 +37,7 @@ export const BaseLayout = () => {
         },
         {
             title: "Insert Companies in Bulk",
-            href: "/api/saveBulk",
+            href: "/company/insert/bulk",
             description:
                 "Uploads a file and inserts multiple companies in bulk.",
         },
