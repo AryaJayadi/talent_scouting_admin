@@ -9,6 +9,9 @@ import {HomePage} from "@/presentation/home/HomePage.tsx";
 import {InsertCompanyPage} from "@/presentation/company/InsertCompanyPage.tsx";
 import {BaseLayout} from "@/presentation/template/BaseLayout.tsx";
 import {InsertCompanyBulkPage} from "@/presentation/company/InsertCompanyBulkPage.tsx";
+import CompanyPage from "@/app/dashboard/company/page.tsx";
+import StudentPage from "@/app/dashboard/student/page.tsx";
+import {DashboardLayout} from "@/app/dashboard/layout.tsx";
 
 const router = createBrowserRouter([
     {
@@ -17,27 +20,41 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "",
-                element: <BaseLayout />,
+                element: <DashboardLayout />,
                 children:[
                     {
-                        path: "",
-                        element: <HomePage />
+                        path: "company",
+                        element: <CompanyPage />
                     },
                     {
-                        path: "company",
-                        children: [
-                            {
-                                path: "insert",
-                                element: <InsertCompanyPage />,
-                            },
-                            {
-                                path: "insert/bulk",
-                                element: <InsertCompanyBulkPage />,
-                            }
-                        ]
+                        path: "student",
+                        element: <StudentPage />
                     },
                 ]
             },
+            // {
+            //     path: "",
+            //     element: <BaseLayout />,
+            //     children:[
+            //         {
+            //             path: "",
+            //             element: <HomePage />
+            //         },
+            //         {
+            //             path: "company",
+            //             children: [
+            //                 {
+            //                     path: "insert",
+            //                     element: <InsertCompanyPage />,
+            //                 },
+            //                 {
+            //                     path: "insert/bulk",
+            //                     element: <InsertCompanyBulkPage />,
+            //                 }
+            //             ]
+            //         },
+            //     ]
+            // },
             {
                 path: "auth",
                 element: <AuthLayout />,
