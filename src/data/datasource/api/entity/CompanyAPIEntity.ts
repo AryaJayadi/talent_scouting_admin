@@ -1,10 +1,15 @@
+import {UserApiEntity} from "@/data/datasource/api/entity/UserApiEntity.ts";
+
 export interface CompanyAPIEntity {
-    id: number;
-    name: string;
-    logoUrl: string;
-    description: string;
-    email: string;
-    password: string;
-    salaryRange: string;
-    location: string;
+    Id: string;
+    UserId: string;
+    Name: string;
+    LogoUrl: string;
+    Description: string;
+    Location: string;
+    CreatedAt: Date;
+    UpdatedAt: Date;
+    DeletedAt: Date | null;
+
+    User: UserApiEntity;
 }

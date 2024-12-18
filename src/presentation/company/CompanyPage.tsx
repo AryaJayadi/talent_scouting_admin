@@ -57,6 +57,7 @@ export const CompanyPage = () => {
                 </TableHeader>
                 <TableBody>
                     {companies.map((company) => {
+                        console.log(company)
                         return (
                             <TableRow key={company.id}>
                                 <TableCell>{company.Name}</TableCell>
