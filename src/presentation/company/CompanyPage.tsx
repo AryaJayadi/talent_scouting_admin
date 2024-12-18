@@ -60,9 +60,9 @@ export const CompanyPage = () => {
                         console.log(company)
                         return (
                             <TableRow key={company.id}>
-                                <TableCell>{company.Name}</TableCell>
-                                <TableCell>{company.Location}</TableCell>
-                                <TableCell>{company.Description}</TableCell>
+                                <TableCell>{company.name}</TableCell>
+                                <TableCell>{company.location}</TableCell>
+                                <TableCell>{company.description}</TableCell>
                                 <TableCell>
                                     <Dialog>
                                         <DialogTrigger asChild>
