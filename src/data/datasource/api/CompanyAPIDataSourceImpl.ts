@@ -7,7 +7,10 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export default class CompanyAPIDataSourceImpl implements CompanyDataSource {
     private axiosInstance = axios.create({
-        baseURL: BASE_URL + "company",
+        baseURL: BASE_URL + "/company",
+        headers: {
+            Authorization : `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjU5ZjYwOS00ODBmLTQxNzUtOTFiNy0zYzEzMzZkNmFiNDkiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwiaXNzIjoiNjY1OWY2MDktNDgwZi00MTc1LTkxYjctM2MxMzM2ZDZhYjQ5IiwiZXhwIjoxNzM0NjE4MzA5fQ.imeGLFjzr5pRGylZkZz7ct4rmxz4f3bZseiBz6KZmQ4`,
+        },
         transformResponse: [function (response) {
             let resp
 

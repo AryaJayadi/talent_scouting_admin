@@ -9,9 +9,9 @@ import {HomePage} from "@/presentation/home/HomePage.tsx";
 import {InsertCompanyPage} from "@/presentation/company/InsertCompanyPage.tsx";
 import {BaseLayout} from "@/presentation/template/BaseLayout.tsx";
 import {InsertCompanyBulkPage} from "@/presentation/company/InsertCompanyBulkPage.tsx";
-import CompanyPage from "@/app/dashboard/company/page.tsx";
 import StudentPage from "@/app/dashboard/student/page.tsx";
 import {DashboardLayout} from "@/app/dashboard/layout.tsx";
+import {CompanyPage} from "@/presentation/company/CompanyPage.tsx";
 
 const router = createBrowserRouter([
     {
