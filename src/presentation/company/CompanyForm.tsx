@@ -2,13 +2,21 @@ import useViewModel from "./CompanyFormViewModel.ts"
 import {Label} from "@/components/ui/label.tsx";
 import {Input} from "@/components/ui/input.tsx";
 import {Button} from "@/components/ui/button.tsx";
+import {Company} from "@/domain/model/Company.ts";
+import {CompanyInsertCompanyAPIRequest} from "@/data/datasource/api/request/CompanyInsertCompanyAPIRequest.ts";
+import {FC} from "react";
 
-export const CompanyForm = () => {
+interface Props {
+    company: Company,
+    onSubmit: (data: CompanyInsertCompanyAPIRequest | Company) => void
+}
+
+export const CompanyForm: FC<Props> = (p) => {
     const {
         formData,
         setFormData,
         handleSubmit,
-    } = useViewModel()
+    } = useViewModel(p.company, p.onSubmit)
 
     return (
         <form onSubmit={handleSubmit} className="space-y-4">

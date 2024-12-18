@@ -4,8 +4,7 @@ import {Button} from "@/components/ui/button.tsx";
 import {FileEdit, Plus, Search, Trash} from "lucide-react";
 import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger} from "@/components/ui/dialog.tsx";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table.tsx";
-import {useState} from "react";
-import {Label} from "@/components/ui/label.tsx";
+import {CompanyForm} from "@/presentation/company/CompanyForm.tsx";
 
 export const CompanyPage = () => {
     const {
@@ -42,7 +41,7 @@ export const CompanyPage = () => {
                         <DialogHeader>
                             <DialogTitle>Create New Company</DialogTitle>
                         </DialogHeader>
-                        {/*<CompanyForm onSubmit={handleCreate}/>*/}
+                        <CompanyForm onSubmit={handleCreate}/>
                     </DialogContent>
                 </Dialog>
             </form>
@@ -74,12 +73,16 @@ export const CompanyPage = () => {
                                             <DialogHeader>
                                                 <DialogTitle>Edit Company</DialogTitle>
                                             </DialogHeader>
+                                            <CompanyForm company={company}/>
                                             {/*<CompanyForm company={company} onSubmit={handleEdit}/>*/}
                                         </DialogContent>
                                     </Dialog>
-                                    <Button variant="destructive" size="sm" onClick={() => handleDelete(company.id)}>
+                                    <Button variant="destructive" size="sm">
                                         <Trash className="mr-2 h-4 w-4"/> Delete
                                     </Button>
+                                    {/*<Button variant="destructive" size="sm" onClick={() => handleDelete(company.id)}>*/}
+                                    {/*    <Trash className="mr-2 h-4 w-4"/> Delete*/}
+                                    {/*</Button>*/}
                                 </TableCell>
                             </TableRow>
                         )
@@ -89,46 +92,3 @@ export const CompanyPage = () => {
         </div>
     )
 }
-
-// function CompanyForm({ company, onSubmit }: { company?: typeof mockCompanies[0], onSubmit: (company: typeof mockCompanies[0]) => void }) {
-//     const [formData, setFormData] = useState(company || { name: '', industry: '', employees: 0 })
-//
-//     const handleSubmit = (e: React.FormEvent) => {
-//         e.preventDefault()
-//         onSubmit(formData)
-//     }
-//
-//     return (
-//         <form onSubmit={handleSubmit} className="space-y-4">
-//             <div>
-//                 <Label htmlFor="name">Company Name</Label>
-//                 <Input
-//                     id="name"
-//                     value={formData.name}
-//                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-//                     required
-//                 />
-//             </div>
-//             <div>
-//                 <Label htmlFor="industry">Industry</Label>
-//                 <Input
-//                     id="industry"
-//                     value={formData.industry}
-//                     onChange={(e) => setFormData({ ...formData, industry: e.target.value })}
-//                     required
-//                 />
-//             </div>
-//             <div>
-//                 <Label htmlFor="employees">Number of Employees</Label>
-//                 <Input
-//                     id="employees"
-//                     type="number"
-//                     value={formData.employees}
-//                     onChange={(e) => setFormData({ ...formData, employees: parseInt(e.target.value) })}
-//                     required
-//                 />
-//             </div>
-//             <Button type="submit">{company ? 'Update' : 'Create'} Company</Button>
-//         </form>
-//     )
-// }
