@@ -105,7 +105,7 @@ export default class CompanyAPIDataSourceImpl implements CompanyDataSource {
         try {
             const response = await this.axiosInstance({
                 method: "POST",
-                url: `/save`,
+                url: `/createNewCompany`,
                 data: company
             });
             return response.data;

@@ -4,7 +4,7 @@ import {CompanyAPIEntity} from "@/data/datasource/api/entity/CompanyAPIEntity.ts
 import {CompanyInsertCompanyAPIRequest} from "@/data/datasource/api/request/CompanyInsertCompanyAPIRequest.ts";
 
 export interface InsertCompanyUseCase {
-    invoke: (data: CompanyAPIEntity) => Promise<Company>
+    invoke: (data: CompanyInsertCompanyAPIRequest) => Promise<Company>
 }
 
 export class InsertCompany implements InsertCompanyUseCase {
