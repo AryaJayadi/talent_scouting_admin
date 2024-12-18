@@ -8,7 +8,7 @@ import {FC} from "react";
 
 interface Props {
     company: Company,
-    onSubmit: (data: CompanyInsertCompanyAPIRequest | Company) => void
+    onSubmit: (data: CompanyInsertCompanyAPIRequest) => void
 }
 
 export const CompanyForm: FC<Props> = (p) => {
@@ -16,39 +16,65 @@ export const CompanyForm: FC<Props> = (p) => {
         formData,
         setFormData,
         handleSubmit,
-    } = useViewModel(p.company, p.onSubmit)
+    } = useViewModel(p)
 
     return (
         <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-                <Label htmlFor="name">Company Name</Label>
+                <Label htmlFor="Name">Company Name</Label>
                 <Input
-                    id="name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    id="Name"
+                    value={formData.Name}
+                    onChange={(e) => setFormData({...formData, Name: e.target.value})}
                     required
                 />
             </div>
             <div>
-                <Label htmlFor="industry">Industry</Label>
+                <Label htmlFor="Email">Company Email</Label>
                 <Input
-                    id="industry"
-                    value={formData.industry}
-                    onChange={(e) => setFormData({...formData, industry: e.target.value})}
+                    id="Email"
+                    value={formData.Email}
+                    onChange={(e) => setFormData({...formData, Email: e.target.value})}
                     required
                 />
             </div>
             <div>
-                <Label htmlFor="employees">Number of Employees</Label>
+                <Label htmlFor="LogoUrl">Company LogoUrl</Label>
                 <Input
-                    id="employees"
-                    type="number"
-                    value={formData.employees}
-                    onChange={(e) => setFormData({...formData, employees: parseInt(e.target.value)})}
+                    id="LogoUrl"
+                    value={formData.LogoUrl}
+                    onChange={(e) => setFormData({...formData, LogoUrl: e.target.value})}
                     required
                 />
             </div>
-            <Button type="submit">{company ? 'Update' : 'Create'} Company</Button>
+            <div>
+                <Label htmlFor="Description">Company Description</Label>
+                <Input
+                    id="Description"
+                    value={formData.Description}
+                    onChange={(e) => setFormData({...formData, Description: e.target.value})}
+                    required
+                />
+            </div>
+            <div>
+                <Label htmlFor="Location">Company Location</Label>
+                <Input
+                    id="Location"
+                    value={formData.Location}
+                    onChange={(e) => setFormData({...formData, Location: e.target.value})}
+                    required
+                />
+            </div>
+            <div>
+                <Label htmlFor="Password">Company Password</Label>
+                <Input
+                    id="Password"
+                    value={formData.Password}
+                    onChange={(e) => setFormData({...formData, Password: e.target.value})}
+                    required
+                />
+            </div>
+            <Button type="submit">Create Company</Button>
         </form>
     )
 }
