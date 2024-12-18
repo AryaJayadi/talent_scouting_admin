@@ -21,12 +21,11 @@ export default class CompanyAPIDataSourceImpl implements CompanyDataSource {
         }]
     })
 
-    async delete(id: number): Promise<void> {
+    async getAll(): Promise<Company[]> {
         try {
             const response = await this.axiosInstance({
-                method: "DELETE",
-                url: "/delete",
-                data: id
+                method: "GET",
+                url: "/"
             });
             return response.data;
         } catch (e) {
@@ -35,11 +34,12 @@ export default class CompanyAPIDataSourceImpl implements CompanyDataSource {
         }
     }
 
-    async getAll(): Promise<Company[]> {
+    async delete(id: number): Promise<void> {
         try {
             const response = await this.axiosInstance({
-                method: "GET",
-                url: "/getAll"
+                method: "DELETE",
+                url: "/delete",
+                data: id
             });
             return response.data;
         } catch (e) {
