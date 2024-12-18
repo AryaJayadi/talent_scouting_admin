@@ -5,4 +5,5 @@ export interface Company {
     logoUrl: string;
     description: string;
     location: string;
+    createdAt: Date;
 }
