@@ -29,7 +29,7 @@ export default class CompanyAPIDataSourceImpl implements CompanyDataSource {
                     logoUrl: item.LogoUrl,
                     description: item.Description,
                     location: item.Location,
-                    createdAt: item.CreatedAt
+                    createdAt: new Date(item.CreatedAt)
                 }))
                     .sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime())
             } else if(resp != null) {
