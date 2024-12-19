@@ -4,9 +4,17 @@ import {AdminRepositoryImpl} from "@/data/repository/AdminRepositoryImpl.ts";
 import {LoginAdmin} from "@/domain/usecase/admin/LoginAdmin.ts";
 import {createAdminLoginAdminAPIRequest} from "@/data/datasource/api/request/AdminLoginAdminAPIRequest.ts";
 import {useToast} from "@/components/ui/use-toast.ts";
+import {useLocalStorage} from "usehooks-ts";
+import {useNavigate} from "react-router";
+import {useLocation} from "react-router-dom";
 
 export default function HomePageViewModel() {
-    const { toast } = useToast()
+    const [value, setValue, removeValue] = useLocalStorage('token', '')
+    const navigate = useNavigate()
+    const location = useLocation()
+    const {toast} = useToast()
+
+    const from = location.state?.from || "/"
 
     const emailRef = useRef<HTMLInputElement | null>(null);
     const passRef = useRef<HTMLInputElement | null>(null);
@@ -22,32 +30,37 @@ export default function HomePageViewModel() {
     }, [loginAdminUseCase]);
 
     async function handleSubmit() {
-        if(!emailRef.current || !passRef.current) {
+        if (!emailRef.current || !passRef.current) {
             toast({
                 title: "Login failed!",
                 description: `Failed to bind refs!`,
             });
             return;
         }
-        if(emailRef.current['value'] == "" || passRef.current['value'] == "") {
+        if (emailRef.current['value'] == "" || passRef.current['value'] == "") {
             toast({
                 title: "Login failed!",
                 description: `Please make sure to fill all fields!`,
             });
             return;
         }
-        const name: string = emailRef.current['value'];
+        const email: string = emailRef.current['value'];
         const pass: string = passRef.current['value'];
 
-        const admin = await loginAdmin(name, pass);
-        console.log(admin);
+        const res = await loginAdmin(email, pass);
+        console.log(res);
+
         toast({
             title: "Login success!",
-            description: `Welcome, ${admin.name}!`,
+            description: `Welcome, ${res.email}!`,
         });
 
         emailRef.current['value'] = null;
         passRef.current['value'] = null;
+
+        setValue(res.token)
+
+        navigate(from, {replace: true})
     }
 
     return {

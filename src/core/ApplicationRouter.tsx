@@ -1,6 +1,6 @@
 import {
     createBrowserRouter, Navigate,
-    RouterProvider,
+    RouterProvider, useLocation,
 } from "react-router-dom";
 import {Root} from "@/presentation/template/Root.tsx";
 import {LoginPage} from "@/presentation/auth/LoginPage.tsx";
@@ -23,34 +23,35 @@ interface ProtectedRouteProps {
 
 const ProtectedRoute: FC<ProtectedRouteProps> = (p) => {
     const [value, setValue, removeValue] = useLocalStorage('token', '')
+    const location = useLocation()
 
-    if(!p.isAuthenticated(value)) {
-        return <Navigate to={p.redirectPath} replace/>
+    if (!p.isAuthenticated(value)) {
+        return <Navigate to={p.redirectPath} state={{from: location}}/>
     }
 
-    return <Outlet />
+    return <Outlet/>
 }
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Root />,
+        element: <Root/>,
         children: [
             {
                 path: "",
-                element: <ProtectedRoute isAuthenticated={isAuthenticated} redirectPath={"/auth/login"} />,
+                element: <ProtectedRoute isAuthenticated={isAuthenticated} redirectPath={"/auth/login"}/>,
                 children: [
                     {
                         path: "",
-                        element: <DashboardLayout />,
-                        children:[
+                        element: <DashboardLayout/>,
+                        children: [
                             {
                                 path: "company",
-                                element: <CompanyPage />
+                                element: <CompanyPage/>
                             },
                             {
                                 path: "student",
-                                element: <StudentPage />
+                                element: <StudentPage/>
                             },
                         ]
                     },
@@ -58,11 +59,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "auth",
-                element: <AuthLayout />,
+                element: <AuthLayout/>,
                 children: [
                     {
                         path: "login",
-                        element: <LoginPage />
+                        element: <LoginPage/>
                     }
                 ]
             }
@@ -72,6 +73,6 @@ const router = createBrowserRouter([
 
 export const ApplicationRouter = () => {
     return (
-        <RouterProvider router={router} />
+        <RouterProvider router={router}/>
     );
 };
