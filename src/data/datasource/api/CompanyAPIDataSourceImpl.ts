@@ -4,13 +4,14 @@ import axios from "axios";
 import {CompanyInsertCompanyAPIRequest} from "@/data/datasource/api/request/CompanyInsertCompanyAPIRequest.ts";
 import {CompanyAPIEntity} from "@/data/datasource/api/entity/CompanyAPIEntity.ts";
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 export default class CompanyAPIDataSourceImpl implements CompanyDataSource {
+    private token = JSON.parse(localStorage.getItem("token") || '""');
     private axiosInstance = axios.create({
         baseURL: BASE_URL + "/company",
         headers: {
-            Authorization : `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxYTQ3NjRlNi1hZTg1LTRlYmYtOGNkZC04MWQ4YTI0YzhjMDQiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwiaXNzIjoiMWE0NzY0ZTYtYWU4NS00ZWJmLThjZGQtODFkOGEyNGM4YzA0IiwiZXhwIjoxNzM0NjU5Mjk4fQ.eF2f9gSQ4gxw1sk8euMzgC0lK70ClVZE6BfdiM1yKqs`,
+            Authorization : `Bearer ${this.token}`,
         },
         transformResponse: [function (response) {
             let resp
