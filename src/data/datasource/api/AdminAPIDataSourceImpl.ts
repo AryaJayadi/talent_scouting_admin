@@ -10,7 +10,6 @@ export default class AdminAPIDataSourceImpl implements AdminDataSource {
     private axiosInstance = axios.create({
         baseURL: BASE_URL,
         transformResponse: [function (response) {
-            console.log(BASE_URL)
             let resp
 
             try {
@@ -50,7 +49,11 @@ export default class AdminAPIDataSourceImpl implements AdminDataSource {
                 url: "/login",
                 data: data,
             });
-            return response.data;
+            return {
+                email: data.email,
+                password: data.password,
+                token: response.data.accessToken,
+            };
         } catch (e) {
             console.log(e);
             throw(e);
