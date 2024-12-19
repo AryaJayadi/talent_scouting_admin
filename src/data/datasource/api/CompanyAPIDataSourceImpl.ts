@@ -10,7 +10,7 @@ export default class CompanyAPIDataSourceImpl implements CompanyDataSource {
     private axiosInstance = axios.create({
         baseURL: BASE_URL + "/company",
         headers: {
-            Authorization : `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjU5ZjYwOS00ODBmLTQxNzUtOTFiNy0zYzEzMzZkNmFiNDkiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwiaXNzIjoiNjY1OWY2MDktNDgwZi00MTc1LTkxYjctM2MxMzM2ZDZhYjQ5IiwiZXhwIjoxNzM0NjE4MzA5fQ.imeGLFjzr5pRGylZkZz7ct4rmxz4f3bZseiBz6KZmQ4`,
+            Authorization : `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxYTQ3NjRlNi1hZTg1LTRlYmYtOGNkZC04MWQ4YTI0YzhjMDQiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwiaXNzIjoiMWE0NzY0ZTYtYWU4NS00ZWJmLThjZGQtODFkOGEyNGM4YzA0IiwiZXhwIjoxNzM0NjU5Mjk4fQ.eF2f9gSQ4gxw1sk8euMzgC0lK70ClVZE6BfdiM1yKqs`,
         },
         transformResponse: [function (response) {
             let resp
