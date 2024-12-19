@@ -4,6 +4,7 @@ import {Button} from "@/components/ui/button.tsx";
 import {FileEdit, Plus, Search, Trash} from "lucide-react";
 import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger} from "@/components/ui/dialog.tsx";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table.tsx";
+import {StudentForm} from "@/presentation/student/StudentForm.tsx";
 
 export const StudentPage = () => {
     const {
@@ -75,7 +76,7 @@ export const StudentPage = () => {
                                             <DialogTitle>Edit Student</DialogTitle>
                                         </DialogHeader>
                                         {/*<StudentForm student={s} onSubmit={handleEdit}/>*/}
-                                        <StudentForm student={s}/>
+                                        <StudentForm onSubmit={handleCreate}/>
                                     </DialogContent>
                                 </Dialog>
                                 {/*<Button variant="destructive" size="sm" onClick={() => handleDelete(s.id)}>*/}
