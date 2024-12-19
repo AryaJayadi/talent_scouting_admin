@@ -1,12 +1,34 @@
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useMemo, useState} from "react";
 import {Student} from "@/domain/model/Student.ts";
+import {StudentRepositoryImpl} from "@/data/repository/StudentRepositoryImpl.ts";
+import StudentAPIDataSourceImpl from "@/data/datasource/api/StudentAPIDataSourceImpl.ts";
+import {GetStudentsByFilter} from "@/domain/usecase/student/GetStudentsByFilter.ts";
+import {
+    createStudentGetByFilterAPIRequest,
+    StudentGetByFilterAPIRequest
+} from "@/data/datasource/api/request/StudentGetByFilterAPIRequest.ts";
 
 export default function StudentPageViewModel() {
     const [loading, setLoading] = useState(true)
     const [student, setStudent] = useState<Student[]>([])
 
-    useEffect(() => {
+    const studentAPIDataSourceImpl = useMemo(() => new StudentAPIDataSourceImpl(), [])
+    const studentRepositoryImpl = useMemo(() => new StudentRepositoryImpl(studentAPIDataSourceImpl), [studentAPIDataSourceImpl])
 
+    const getStudentByFilterUseCase = useMemo(() => new GetStudentsByFilter(studentRepositoryImpl), [studentRepositoryImpl])
+
+    const getStudentsByFilter = useCallback(async (query: StudentGetByFilterAPIRequest) => {
+        return await getStudentByFilterUseCase.invoke(query)
+    }, [getStudentByFilterUseCase])
+
+    useEffect(() => {
+        async function fetchStudents() {
+            setLoading(true)
+            const res = await getStudentsByFilter(createStudentGetByFilterAPIRequest())
+            setStudent(res)
+            setLoading(false)
+        }
+        fetchStudents()
     }, [])
 
     function handleCreate() {
