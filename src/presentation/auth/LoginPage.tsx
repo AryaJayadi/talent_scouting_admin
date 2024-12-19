@@ -13,7 +13,7 @@ import useViewModel from "./LoginPageViewModel.ts"
 
 export const LoginPage = () => {
     const {
-        nameRef,
+        emailRef,
         passRef,
         handleSubmit
     } = useViewModel();
@@ -28,8 +28,8 @@ export const LoginPage = () => {
                 <form>
                     <div className="grid w-full items-center gap-4">
                         <div className="flex flex-col space-y-1.5">
-                            <Label htmlFor="name">Name</Label>
-                            <Input id="name" placeholder="Name" ref={nameRef} type="text"/>
+                            <Label htmlFor="email">Email</Label>
+                            <Input id="email" placeholder="Email" ref={emailRef} type="text"/>
                         </div>
                         <div className="flex flex-col space-y-1.5">
                             <Label htmlFor="password">Password</Label>

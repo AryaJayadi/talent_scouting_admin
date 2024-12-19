@@ -10,18 +10,21 @@ import {DashboardLayout} from "@/app/dashboard/layout.tsx";
 import {CompanyPage} from "@/presentation/company/CompanyPage.tsx";
 import {Outlet} from "react-router";
 import {FC} from "react";
+import {useLocalStorage} from "usehooks-ts";
 
-function isAuthencticated() : boolean {
-    return true;
+function isAuthenticated(token: string): boolean {
+    return token != "";
 }
 
 interface ProtectedRouteProps {
-    isAuthenticated: () => boolean;
+    isAuthenticated: (token: string) => boolean;
     redirectPath: string;
 }
 
 const ProtectedRoute: FC<ProtectedRouteProps> = (p) => {
-    if(!p.isAuthenticated()) {
+    const [value, setValue, removeValue] = useLocalStorage('token', '')
+
+    if(!p.isAuthenticated(value)) {
         return <Navigate to={p.redirectPath} replace/>
     }
 
@@ -35,7 +38,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "",
-                element: <ProtectedRoute isAuthenticated={isAuthencticated} redirectPath={"/auth/login"} />,
+                element: <ProtectedRoute isAuthenticated={isAuthenticated} redirectPath={"/auth/login"} />,
                 children: [
                     {
                         path: "",

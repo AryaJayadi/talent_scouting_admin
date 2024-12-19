@@ -1,14 +1,14 @@
 export interface AdminLoginAdminAPIRequest {
-    name: string;
+    email: string;
     password: string;
 }
 
 export function createAdminLoginAdminAPIRequest(
-    name: string,
+    email: string,
     password: string,
 ): AdminLoginAdminAPIRequest {
     return {
-        name,
+        email,
         password
     }
 }

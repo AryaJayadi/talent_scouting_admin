@@ -4,12 +4,13 @@ import axios from "axios";
 import {AdminAPIEntity} from "@/data/datasource/api/entity/AdminAPIEntity.ts";
 import {AdminLoginAdminAPIRequest} from "@/data/datasource/api/request/AdminLoginAdminAPIRequest.ts";
 
-const BASE_URL = import.meta.env.VITE_BACKEND_URL + "admin";
+const BASE_URL = import.meta.env.VITE_BACKEND_URL + "/user";
 
 export default class AdminAPIDataSourceImpl implements AdminDataSource {
     private axiosInstance = axios.create({
         baseURL: BASE_URL,
         transformResponse: [function (response) {
+            console.log(BASE_URL)
             let resp
 
             try {
