@@ -1,10 +1,11 @@
 import useViewModel from "./CompanyPageViewModel.ts"
 import {Input} from "@/components/ui/input.tsx";
 import {Button} from "@/components/ui/button.tsx";
-import {FileEdit, Plus, Search, Trash} from "lucide-react";
+import {Eye, FileEdit, Plus, Search, Trash} from "lucide-react";
 import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger} from "@/components/ui/dialog.tsx";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table.tsx";
 import {CompanyForm} from "@/presentation/company/CompanyForm.tsx";
+import {Link} from "react-router-dom";
 
 export const CompanyPage = () => {
     const {
@@ -70,23 +71,30 @@ export const CompanyPage = () => {
                                 <TableCell>{company.location}</TableCell>
                                 <TableCell>{company.description}</TableCell>
                                 <TableCell>
-                                    <Dialog>
-                                        <DialogTrigger asChild>
-                                            <Button variant="outline" size="sm" className="mr-2">
-                                                <FileEdit className="mr-2 h-4 w-4"/> Edit
-                                            </Button>
-                                        </DialogTrigger>
-                                        <DialogContent>
-                                            <DialogHeader>
-                                                <DialogTitle>Edit Company</DialogTitle>
-                                            </DialogHeader>
-                                            <CompanyForm company={company}/>
-                                            {/*<CompanyForm company={company} onSubmit={handleEdit}/>*/}
-                                        </DialogContent>
-                                    </Dialog>
-                                    <Button variant="destructive" size="sm" onClick={() => handleDelete(company.id)}>
-                                        <Trash className="mr-2 h-4 w-4"/> Delete
-                                    </Button>
+                                    <div className='flex space-x-2'>
+                                        <Button variant="outline" size="sm" asChild>
+                                            <Link to={`/dashboard/company/${company.id}`}>
+                                                <Eye className="mr-2 h-4 w-4" /> Detail
+                                            </Link>
+                                        </Button>
+                                        <Dialog>
+                                            <DialogTrigger asChild>
+                                                <Button variant="outline" size="sm" className="mr-2">
+                                                    <FileEdit className="mr-2 h-4 w-4"/> Edit
+                                                </Button>
+                                            </DialogTrigger>
+                                            <DialogContent>
+                                                <DialogHeader>
+                                                    <DialogTitle>Edit Company</DialogTitle>
+                                                </DialogHeader>
+                                                <CompanyForm company={company}/>
+                                                {/*<CompanyForm company={company} onSubmit={handleEdit}/>*/}
+                                            </DialogContent>
+                                        </Dialog>
+                                        <Button variant="destructive" size="sm" onClick={() => handleDelete(company.id)}>
+                                            <Trash className="mr-2 h-4 w-4"/> Delete
+                                        </Button>
+                                    </div>
                                 </TableCell>
                             </TableRow>
                         )
