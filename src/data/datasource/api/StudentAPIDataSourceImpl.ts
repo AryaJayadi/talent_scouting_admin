@@ -1,8 +1,8 @@
 import StudentDataSource from "@/data/datasource/StudentDataSource.ts";
 import {Student} from "@/domain/model/Student.ts";
 import axios from "axios";
-import * as console from "node:console";
 import {StudentGetByFilterAPIRequest} from "@/data/datasource/api/request/StudentGetByFilterAPIRequest.ts";
+import {StudentInsertStudentAPIRequest} from "@/data/datasource/api/request/StudentInsertStudentAPIRequest.ts";
 
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -45,6 +45,20 @@ export default class StudentAPIDataSourceImpl implements StudentDataSource {
                 method: "POST",
                 url: "/getStudentByFilter",
                 data: query,
+            });
+            return response.data;
+        } catch (e) {
+            console.log(e);
+            throw(e);
+        }
+    }
+
+    async save(data: StudentInsertStudentAPIRequest): Promise<Student> {
+        try {
+            const response = await this.axiosInstance({
+                method: "POST",
+                url: "",
+                data: data,
             });
             return response.data;
         } catch (e) {

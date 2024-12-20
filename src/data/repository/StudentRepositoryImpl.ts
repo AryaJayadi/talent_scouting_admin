@@ -2,6 +2,7 @@ import {StudentRepository} from "@/domain/repository/StudentRepository.ts";
 import {Student} from "@/domain/model/Student.ts";
 import StudentDataSource from "@/data/datasource/StudentDataSource.ts";
 import {StudentGetByFilterAPIRequest} from "@/data/datasource/api/request/StudentGetByFilterAPIRequest.ts";
+import {StudentInsertStudentAPIRequest} from "@/data/datasource/api/request/StudentInsertStudentAPIRequest.ts";
 
 export class StudentRepositoryImpl implements StudentRepository {
     private datasource: StudentDataSource;
@@ -18,4 +19,7 @@ export class StudentRepositoryImpl implements StudentRepository {
         return this.datasource.getByFilter(query);
     }
 
+    insertStudent(data: StudentInsertStudentAPIRequest): Promise<Student> {
+        return this.datasource.save(data);
+    }
 }
