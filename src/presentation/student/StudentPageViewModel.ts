@@ -13,6 +13,7 @@ import {InsertStudent} from "@/domain/usecase/student/InsertStudent.ts";
 export default function StudentPageViewModel() {
     const [loading, setLoading] = useState(true)
     const [students, setStudents] = useState<Student[]>([])
+    const [searchKeyword, setSearchKeyword] = useState<string>("")
 
     const studentAPIDataSourceImpl = useMemo(() => new StudentAPIDataSourceImpl(), [])
     const studentRepositoryImpl = useMemo(() => new StudentRepositoryImpl(studentAPIDataSourceImpl), [studentAPIDataSourceImpl])
@@ -45,9 +46,21 @@ export default function StudentPageViewModel() {
         return res
     }
 
+    async function handleSearch(e: React.FormEvent) {
+        e.preventDefault()
+
+        setLoading(true)
+        const res = await getStudentsByFilter(createStudentGetByFilterAPIRequest(searchKeyword))
+        setStudents(res)
+        setLoading(false)
+    }
+
     return {
         loading,
         students,
+        searchKeyword,
+        setSearchKeyword,
         handleCreate,
+        handleSearch,
     }
 }

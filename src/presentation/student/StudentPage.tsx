@@ -10,28 +10,29 @@ export const StudentPage = () => {
     const {
         loading,
         students,
-        handleCreate
+        searchKeyword,
+        setSearchKeyword,
+        handleCreate,
+        handleSearch,
     } = useViewModel()
 
     return (
         <div>
             <h1 className="text-2xl font-bold mb-6">Student Management</h1>
-            {/*<form onSubmit={handleSearch} className="flex gap-4 mb-6">*/}
-            <form className="flex gap-4 mb-6">
-                <Input
-                    type="text"
-                    placeholder="Search students..."
-                    // value={searchTerm}
-                    // onChange={(e) => setSearchTerm(e.target.value)
-                    className="max-w-sm"
-                />
+            <form onSubmit={handleSearch} className="flex gap-4 mb-6">
+            {/*<form className="flex gap-4 mb-6">*/}
                 {/*<Input*/}
                 {/*    type="text"*/}
                 {/*    placeholder="Search students..."*/}
-                {/*    value={searchTerm}*/}
-                {/*    onChange={(e) => setSearchTerm(e.target.value)}*/}
                 {/*    className="max-w-sm"*/}
                 {/*/>*/}
+                <Input
+                    type="text"
+                    placeholder="Search students..."
+                    value={searchKeyword}
+                    onChange={(e) => setSearchKeyword(e.target.value)}
+                    className="max-w-sm"
+                />
                 <Button type="submit">
                     <Search className="mr-2 h-4 w-4"/> Search
                 </Button>
