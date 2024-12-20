@@ -42,7 +42,7 @@ export default function StudentPageViewModel() {
     }, [loading])
 
     async function handleCreate(data: StudentInsertStudentAPIRequest) {
-        insertStudent(data).then(() => setLoading(false));
+        insertStudent(data).then(() => setLoading(true));
         setOpenDialog(false)
     }
 
