@@ -57,7 +57,7 @@ export default class StudentAPIDataSourceImpl implements StudentDataSource {
         try {
             const response = await this.axiosInstance({
                 method: "POST",
-                url: "",
+                url: "/",
                 data: data,
             });
             return response.data;

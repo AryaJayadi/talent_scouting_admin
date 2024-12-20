@@ -6,7 +6,7 @@ import {
 import {Student} from "@/domain/model/Student.ts";
 
 interface  Props {
-    onSubmit: (data: StudentInsertStudentAPIRequest) => Student;
+    onSubmit: (data: StudentInsertStudentAPIRequest) => Promise<Student>;
 }
 
 export default function StudentFormViewModel(p: Props) {

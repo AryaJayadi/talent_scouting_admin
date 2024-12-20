@@ -7,7 +7,7 @@ import {StudentInsertStudentAPIRequest} from "@/data/datasource/api/request/Stud
 import {Student} from "@/domain/model/Student.ts";
 
 interface Props {
-    onSubmit: (data: StudentInsertStudentAPIRequest) => Student;
+    onSubmit: (data: StudentInsertStudentAPIRequest) => Promise<Student>;
 }
 
 export const StudentForm: FC<Props> = (p) => {
