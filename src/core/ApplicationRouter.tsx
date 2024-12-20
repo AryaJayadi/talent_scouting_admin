@@ -13,7 +13,27 @@ import {useLocalStorage} from "usehooks-ts";
 import {StudentPage} from "@/presentation/student/StudentPage.tsx";
 
 function isAuthenticated(token: string): boolean {
-    return token != "";
+    if (!token) {
+        return true;
+    }
+
+    try {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+
+        const expirationTime = payload.exp;
+
+        if (!expirationTime) {
+            return true;
+        }
+
+        const currentTime = Math.floor(Date.now() / 1000);
+
+        return currentTime < expirationTime;
+
+    } catch (error) {
+        console.error("Error decoding token:", error);
+        return false;
+    }
 }
 
 interface ProtectedRouteProps {
