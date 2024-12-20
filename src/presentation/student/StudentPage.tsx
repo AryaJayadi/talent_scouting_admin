@@ -20,12 +20,6 @@ export const StudentPage = () => {
         <div>
             <h1 className="text-2xl font-bold mb-6">Student Management</h1>
             <form onSubmit={handleSearch} className="flex gap-4 mb-6">
-            {/*<form className="flex gap-4 mb-6">*/}
-                {/*<Input*/}
-                {/*    type="text"*/}
-                {/*    placeholder="Search students..."*/}
-                {/*    className="max-w-sm"*/}
-                {/*/>*/}
                 <Input
                     type="text"
                     placeholder="Search students..."
