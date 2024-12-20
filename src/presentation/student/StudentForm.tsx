@@ -4,10 +4,9 @@ import {Input} from "@/components/ui/input.tsx";
 import {Button} from "@/components/ui/button.tsx";
 import {FC} from "react";
 import {StudentInsertStudentAPIRequest} from "@/data/datasource/api/request/StudentInsertStudentAPIRequest.ts";
-import {Student} from "@/domain/model/Student.ts";
 
 interface Props {
-    onSubmit: (data: StudentInsertStudentAPIRequest) => Promise<Student>;
+    onSubmit: (data: StudentInsertStudentAPIRequest) => Promise<void>;
 }
 
 export const StudentForm: FC<Props> = (p) => {

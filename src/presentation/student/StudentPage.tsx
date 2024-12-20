@@ -9,6 +9,8 @@ import {StudentForm} from "@/presentation/student/StudentForm.tsx";
 export const StudentPage = () => {
     const {
         loading,
+        openDialog,
+        setOpenDialog,
         students,
         searchKeyword,
         setSearchKeyword,
@@ -30,7 +32,7 @@ export const StudentPage = () => {
                 <Button type="submit">
                     <Search className="mr-2 h-4 w-4"/> Search
                 </Button>
-                <Dialog>
+                <Dialog open={openDialog} onOpenChange={setOpenDialog}>
                     <DialogTrigger asChild>
                         <Button>
                             <Plus className="mr-2 h-4 w-4"/> Create Student

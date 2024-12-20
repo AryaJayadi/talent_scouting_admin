@@ -12,6 +12,7 @@ import {InsertStudent} from "@/domain/usecase/student/InsertStudent.ts";
 
 export default function StudentPageViewModel() {
     const [loading, setLoading] = useState(true)
+    const [openDialog, setOpenDialog] = useState(false)
     const [students, setStudents] = useState<Student[]>([])
     const [searchKeyword, setSearchKeyword] = useState<string>("")
 
@@ -42,6 +43,7 @@ export default function StudentPageViewModel() {
 
     async function handleCreate(data: StudentInsertStudentAPIRequest) {
         insertStudent(data).then(() => setLoading(false));
+        setOpenDialog(false)
     }
 
     async function handleSearch(e: React.FormEvent) {
@@ -53,6 +55,8 @@ export default function StudentPageViewModel() {
 
     return {
         loading,
+        openDialog,
+        setOpenDialog,
         students,
         searchKeyword,
         setSearchKeyword,
