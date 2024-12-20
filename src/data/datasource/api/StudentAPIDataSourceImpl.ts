@@ -4,11 +4,15 @@ import axios from "axios";
 import * as console from "node:console";
 import {StudentGetByFilterAPIRequest} from "@/data/datasource/api/request/StudentGetByFilterAPIRequest.ts";
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 export default class StudentAPIDataSourceImpl implements StudentDataSource {
+    private token = JSON.parse(localStorage.getItem("token") || '""');
     private axiosInstance = axios.create({
-        baseURL: BASE_URL + "student",
+        baseURL: BASE_URL + "/student",
+        headers: {
+            Authorization : `Bearer ${this.token}`,
+        },
         transformResponse: [function (response) {
             let resp
 

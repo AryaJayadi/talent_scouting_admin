@@ -9,7 +9,7 @@ import {StudentForm} from "@/presentation/student/StudentForm.tsx";
 export const StudentPage = () => {
     const {
         loading,
-        student,
+        students,
         handleCreate
     } = useViewModel()
 
@@ -59,7 +59,7 @@ export const StudentPage = () => {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {student.map((s) => (
+                    {students.map((s) => (
                         <TableRow key={s.id}>
                             <TableCell>{s.name}</TableCell>
                             <TableCell>{s.major}</TableCell>

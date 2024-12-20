@@ -10,7 +10,7 @@ import {
 
 export default function StudentPageViewModel() {
     const [loading, setLoading] = useState(true)
-    const [student, setStudent] = useState<Student[]>([])
+    const [students, setStudents] = useState<Student[]>([])
 
     const studentAPIDataSourceImpl = useMemo(() => new StudentAPIDataSourceImpl(), [])
     const studentRepositoryImpl = useMemo(() => new StudentRepositoryImpl(studentAPIDataSourceImpl), [studentAPIDataSourceImpl])
@@ -25,9 +25,10 @@ export default function StudentPageViewModel() {
         async function fetchStudents() {
             setLoading(true)
             const res = await getStudentsByFilter(createStudentGetByFilterAPIRequest())
-            setStudent(res)
+            setStudents(res)
             setLoading(false)
         }
+        console.log("test")
         fetchStudents()
     }, [])
 
@@ -37,7 +38,7 @@ export default function StudentPageViewModel() {
 
     return {
         loading,
-        student,
+        students,
         handleCreate,
     }
 }
