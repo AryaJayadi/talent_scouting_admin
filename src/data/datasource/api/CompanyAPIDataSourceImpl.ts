@@ -61,12 +61,11 @@ export default class CompanyAPIDataSourceImpl implements CompanyDataSource {
         }
     }
 
-    async delete(id: number): Promise<void> {
+    async delete(id: string): Promise<void> {
         try {
             const response = await this.axiosInstance({
                 method: "DELETE",
-                url: "/delete",
-                data: id
+                url: `/delete/${id}`,
             });
             return response.data;
         } catch (e) {

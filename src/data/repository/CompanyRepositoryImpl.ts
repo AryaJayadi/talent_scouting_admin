@@ -10,7 +10,7 @@ export class CompanyRepositoryImpl implements CompanyRepository {
         this.dataSource = _dataSource;
     }
 
-    deleteCompany(id: number): Promise<void> {
+    deleteCompany(id: string): Promise<void> {
         return this.dataSource.delete(id);
     }
 

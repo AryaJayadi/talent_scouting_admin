@@ -4,7 +4,7 @@ import {CompanyInsertCompanyAPIRequest} from "@/data/datasource/api/request/Comp
 export interface CompanyRepository {
     getCompany(id: number): Promise<Company>;
     insertCompany(company: CompanyInsertCompanyAPIRequest): Promise<Company>;
-    deleteCompany(id: number): Promise<void>;
+    deleteCompany(id: string): Promise<void>;
     getAllCompany(): Promise<Company[]>;
     insertBulkCompany(file: File): Promise<Company[]>;
 }

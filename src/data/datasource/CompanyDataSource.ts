@@ -4,7 +4,7 @@ import {CompanyInsertCompanyAPIRequest} from "@/data/datasource/api/request/Comp
 export default interface CompanyDataSource {
     get(id: number): Promise<Company>;
     save(company: CompanyInsertCompanyAPIRequest): Promise<Company>;
-    delete(id: number): Promise<void>;
+    delete(id: string): Promise<void>;
     getAll(): Promise<Company[]>;
     saveBulk(file: File): Promise<Company[]>;
 }
