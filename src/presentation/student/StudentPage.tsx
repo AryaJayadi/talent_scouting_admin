@@ -1,10 +1,11 @@
 import useViewModel from "./StudentPageViewModel.ts"
 import {Input} from "@/components/ui/input.tsx";
 import {Button} from "@/components/ui/button.tsx";
-import {FileEdit, Plus, Search, Trash} from "lucide-react";
+import {Eye, FileEdit, Plus, Search, Trash} from "lucide-react";
 import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger} from "@/components/ui/dialog.tsx";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table.tsx";
 import {StudentForm} from "@/presentation/student/StudentForm.tsx";
+import {Link} from "react-router-dom";
 
 export const StudentPage = () => {
     const {
@@ -62,24 +63,31 @@ export const StudentPage = () => {
                             <TableCell>{s.major}</TableCell>
                             <TableCell>{s.gpa}</TableCell>
                             <TableCell>
-                                <Dialog>
-                                    <DialogTrigger asChild>
-                                        <Button variant="outline" size="sm" className="mr-2">
-                                            <FileEdit className="mr-2 h-4 w-4"/> Edit
-                                        </Button>
-                                    </DialogTrigger>
-                                    <DialogContent>
-                                        <DialogHeader>
-                                            <DialogTitle>Edit Student</DialogTitle>
-                                        </DialogHeader>
-                                        {/*<StudentForm student={s} onSubmit={handleEdit}/>*/}
-                                        <StudentForm onSubmit={handleCreate}/>
-                                    </DialogContent>
-                                </Dialog>
-                                {/*<Button variant="destructive" size="sm" onClick={() => handleDelete(s.id)}>*/}
-                                <Button variant="destructive" size="sm">
-                                    <Trash className="mr-2 h-4 w-4"/> Delete
-                                </Button>
+                                <div className='flex space-x-2'>
+                                    <Button variant="outline" size="sm" asChild>
+                                        <Link to={`/dashboard/company/${s.id}`}>
+                                            <Eye className="mr-2 h-4 w-4" /> Detail
+                                        </Link>
+                                    </Button>
+                                    <Dialog>
+                                        <DialogTrigger asChild>
+                                            <Button variant="outline" size="sm" className="mr-2">
+                                                <FileEdit className="mr-2 h-4 w-4"/> Edit
+                                            </Button>
+                                        </DialogTrigger>
+                                        <DialogContent>
+                                            <DialogHeader>
+                                                <DialogTitle>Edit Student</DialogTitle>
+                                            </DialogHeader>
+                                            {/*<StudentForm student={s} onSubmit={handleEdit}/>*/}
+                                            <StudentForm onSubmit={handleCreate}/>
+                                        </DialogContent>
+                                    </Dialog>
+                                    {/*<Button variant="destructive" size="sm" onClick={() => handleDelete(s.id)}>*/}
+                                    <Button variant="destructive" size="sm">
+                                        <Trash className="mr-2 h-4 w-4"/> Delete
+                                    </Button>
+                                </div>
                             </TableCell>
                         </TableRow>
                     ))}
