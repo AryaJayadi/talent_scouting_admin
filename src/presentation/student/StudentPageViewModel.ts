@@ -8,6 +8,7 @@ import {
     StudentGetByFilterAPIRequest
 } from "@/data/datasource/api/request/StudentGetByFilterAPIRequest.ts";
 import {StudentInsertStudentAPIRequest} from "@/data/datasource/api/request/StudentInsertStudentAPIRequest.ts";
+import {InsertStudent} from "@/domain/usecase/student/InsertStudent.ts";
 
 export default function StudentPageViewModel() {
     const [loading, setLoading] = useState(true)
@@ -17,10 +18,15 @@ export default function StudentPageViewModel() {
     const studentRepositoryImpl = useMemo(() => new StudentRepositoryImpl(studentAPIDataSourceImpl), [studentAPIDataSourceImpl])
 
     const getStudentByFilterUseCase = useMemo(() => new GetStudentsByFilter(studentRepositoryImpl), [studentRepositoryImpl])
+    const insertStudentUseCase = useMemo(() => new InsertStudent(studentRepositoryImpl), [studentRepositoryImpl])
 
     const getStudentsByFilter = useCallback(async (query: StudentGetByFilterAPIRequest) => {
         return await getStudentByFilterUseCase.invoke(query)
     }, [getStudentByFilterUseCase])
+
+    const insertStudent = useCallback(async (data: StudentInsertStudentAPIRequest) => {
+        return await insertStudentUseCase.invoke(data);
+    }, [insertStudentUseCase])
 
     useEffect(() => {
         async function fetchStudents() {
@@ -32,8 +38,11 @@ export default function StudentPageViewModel() {
         fetchStudents()
     }, [])
 
-    function handleCreate(data: StudentInsertStudentAPIRequest) {
-        
+    async function handleCreate(data: StudentInsertStudentAPIRequest) {
+        setLoading(true)
+        const res = await insertStudent(data)
+        setLoading(false)
+        return res
     }
 
     return {

@@ -3,9 +3,10 @@ import {
     createStudentInsertStudentAPIRequest,
     StudentInsertStudentAPIRequest
 } from "@/data/datasource/api/request/StudentInsertStudentAPIRequest.ts";
+import {Student} from "@/domain/model/Student.ts";
 
 interface  Props {
-    onSubmit: (data: StudentInsertStudentAPIRequest) => void;
+    onSubmit: (data: StudentInsertStudentAPIRequest) => Student;
 }
 
 export default function StudentFormViewModel(p: Props) {
