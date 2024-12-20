@@ -1,16 +1,24 @@
 import {useState} from "react";
+import {
+    createStudentInsertStudentAPIRequest,
+    StudentInsertStudentAPIRequest
+} from "@/data/datasource/api/request/StudentInsertStudentAPIRequest.ts";
 
 interface  Props {
-    onSubmit: () => void;
+    onSubmit: (data: StudentInsertStudentAPIRequest) => void;
 }
 
 export default function StudentFormViewModel(p: Props) {
+    const [formData, setFormData] = useState<StudentInsertStudentAPIRequest>(createStudentInsertStudentAPIRequest())
 
-    function handleSubmit() {
-        p.onSubmit()
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault()
+        p.onSubmit(formData)
     }
 
     return {
+        formData,
+        setFormData,
         handleSubmit,
     }
 }

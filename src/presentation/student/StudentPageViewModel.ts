@@ -7,6 +7,7 @@ import {
     createStudentGetByFilterAPIRequest,
     StudentGetByFilterAPIRequest
 } from "@/data/datasource/api/request/StudentGetByFilterAPIRequest.ts";
+import {StudentInsertStudentAPIRequest} from "@/data/datasource/api/request/StudentInsertStudentAPIRequest.ts";
 
 export default function StudentPageViewModel() {
     const [loading, setLoading] = useState(true)
@@ -28,11 +29,10 @@ export default function StudentPageViewModel() {
             setStudents(res)
             setLoading(false)
         }
-        console.log("test")
         fetchStudents()
     }, [])
 
-    function handleCreate() {
+    function handleCreate(data: StudentInsertStudentAPIRequest) {
         
     }
 
