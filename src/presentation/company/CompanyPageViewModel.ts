@@ -29,12 +29,15 @@ export default function CompanyPageViewModel() {
             const res = await getCompanies();
             setCompanies(res);
         };
-        setLoading(true)
-        fetchCompanies().then(() => setLoading(false));
-    }, []);
+
+        if(loading) {
+            fetchCompanies().then(() => setLoading(false));
+        }
+
+    }, [loading]);
 
     const handleCreate = (data: CompanyInsertCompanyAPIRequest) => {
-        insertCompany(data);
+        insertCompany(data).then(() => setLoading(true));
     }
 
     return {
