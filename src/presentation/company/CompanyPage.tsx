@@ -9,6 +9,8 @@ import {CompanyForm} from "@/presentation/company/CompanyForm.tsx";
 export const CompanyPage = () => {
     const {
         loading,
+        openDialog,
+        setOpenDialog,
         companies,
         handleCreate,
     } = useViewModel()
@@ -35,7 +37,7 @@ export const CompanyPage = () => {
                 <Button type="submit">
                     <Search className="mr-2 h-4 w-4"/> Search
                 </Button>
-                <Dialog>
+                <Dialog open={openDialog} onOpenChange={setOpenDialog}>
                     <DialogTrigger asChild>
                         <Button>
                             <Plus className="mr-2 h-4 w-4"/> Create Company

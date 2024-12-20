@@ -8,6 +8,7 @@ import {InsertCompany} from "@/domain/usecase/company/InsertCompany.ts";
 
 export default function CompanyPageViewModel() {
     const [loading, setLoading] = useState(true);
+    const [openDialog, setOpenDialog] = useState(false)
     const [companies, setCompanies] = useState<Company[]>([])
 
     const companyAPIDataSourceImpl = useMemo(() => new CompanyAPIDataSourceImpl(), [])
@@ -38,10 +39,13 @@ export default function CompanyPageViewModel() {
 
     const handleCreate = (data: CompanyInsertCompanyAPIRequest) => {
         insertCompany(data).then(() => setLoading(true));
+        setOpenDialog(false)
     }
 
     return {
         loading,
+        openDialog,
+        setOpenDialog,
         companies,
         handleCreate,
     }
