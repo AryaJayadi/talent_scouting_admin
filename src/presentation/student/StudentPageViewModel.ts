@@ -31,28 +31,24 @@ export default function StudentPageViewModel() {
 
     useEffect(() => {
         async function fetchStudents() {
-            setLoading(true)
             const res = await getStudentsByFilter(createStudentGetByFilterAPIRequest())
             setStudents(res)
-            setLoading(false)
         }
-        fetchStudents()
-    }, [])
+
+        if(loading) {
+            fetchStudents().then(() => setLoading(false))
+        }
+    }, [loading])
 
     async function handleCreate(data: StudentInsertStudentAPIRequest) {
-        setLoading(true)
-        const res = await insertStudent(data)
-        setLoading(false)
-        return res
+        insertStudent(data).then(() => setLoading(false));
     }
 
     async function handleSearch(e: React.FormEvent) {
         e.preventDefault()
 
-        setLoading(true)
         const res = await getStudentsByFilter(createStudentGetByFilterAPIRequest(searchKeyword))
         setStudents(res)
-        setLoading(false)
     }
 
     return {
