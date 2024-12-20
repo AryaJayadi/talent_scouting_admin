@@ -5,6 +5,7 @@ import {GetCompanies} from "@/domain/usecase/company/GetCompanies.ts";
 import {Company} from "@/domain/model/Company.ts";
 import {CompanyInsertCompanyAPIRequest} from "@/data/datasource/api/request/CompanyInsertCompanyAPIRequest.ts";
 import {InsertCompany} from "@/domain/usecase/company/InsertCompany.ts";
+import {DeleteCompany} from "@/domain/usecase/company/DeleteCompany.ts";
 
 export default function CompanyPageViewModel() {
     const [loading, setLoading] = useState(true);
@@ -16,6 +17,7 @@ export default function CompanyPageViewModel() {
 
     const getCompaniesUseCase = useMemo(() => new GetCompanies(companyRepositoryImpl), [companyRepositoryImpl])
     const insertCompanyUseCase = useMemo(() => new InsertCompany(companyRepositoryImpl), [companyRepositoryImpl])
+    const deleteCompanyUseCase = useMemo(() => new DeleteCompany(companyRepositoryImpl), [companyRepositoryImpl])
 
     const getCompanies = useCallback(async () => {
         return await getCompaniesUseCase.invoke();
@@ -24,6 +26,10 @@ export default function CompanyPageViewModel() {
     const insertCompany = useCallback(async (data: CompanyInsertCompanyAPIRequest) => {
         return await insertCompanyUseCase.invoke(data);
     }, [insertCompanyUseCase])
+
+    const deleteCompany = useCallback(async (id: string) => {
+        return await deleteCompanyUseCase.invoke(id)
+    }, [deleteCompanyUseCase])
 
     useEffect(() => {
         const fetchCompanies = async () => {
@@ -37,9 +43,13 @@ export default function CompanyPageViewModel() {
 
     }, [loading]);
 
-    const handleCreate = (data: CompanyInsertCompanyAPIRequest) => {
+    function handleCreate(data: CompanyInsertCompanyAPIRequest) {
         insertCompany(data).then(() => setLoading(true));
         setOpenDialog(false)
+    }
+
+    function handleDelete(id: string) {
+        deleteCompany(id).then(() => setLoading(true));
     }
 
     return {
@@ -48,5 +58,6 @@ export default function CompanyPageViewModel() {
         setOpenDialog,
         companies,
         handleCreate,
+        handleDelete,
     }
 }

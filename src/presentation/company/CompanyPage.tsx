@@ -13,6 +13,7 @@ export const CompanyPage = () => {
         setOpenDialog,
         companies,
         handleCreate,
+        handleDelete,
     } = useViewModel()
 
     return (
@@ -83,12 +84,9 @@ export const CompanyPage = () => {
                                             {/*<CompanyForm company={company} onSubmit={handleEdit}/>*/}
                                         </DialogContent>
                                     </Dialog>
-                                    <Button variant="destructive" size="sm">
+                                    <Button variant="destructive" size="sm" onClick={() => handleDelete(company.id)}>
                                         <Trash className="mr-2 h-4 w-4"/> Delete
                                     </Button>
-                                    {/*<Button variant="destructive" size="sm" onClick={() => handleDelete(company.id)}>*/}
-                                    {/*    <Trash className="mr-2 h-4 w-4"/> Delete*/}
-                                    {/*</Button>*/}
                                 </TableCell>
                             </TableRow>
                         )
