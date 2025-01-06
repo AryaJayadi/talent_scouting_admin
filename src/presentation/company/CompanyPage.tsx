@@ -13,10 +13,13 @@ export const CompanyPage = () => {
         loading,
         openDialog,
         setOpenDialog,
+        openDialogBulk,
+        setOpenDialogBulk,
         companies,
         handleCreate,
         handleDelete,
         handleEdit,
+        handleBulkInsert,
     } = useViewModel()
 
     return (
@@ -54,7 +57,7 @@ export const CompanyPage = () => {
                         <CompanyForm onSubmit={handleCreate}/>
                     </DialogContent>
                 </Dialog>
-                <Dialog>
+                <Dialog open={openDialogBulk} onOpenChange={setOpenDialogBulk}>
                     <DialogTrigger asChild>
                         <Button variant="secondary">
                             <Upload className="mr-2 h-4 w-4" /> Insert Bulk
@@ -64,7 +67,7 @@ export const CompanyPage = () => {
                         <DialogHeader>
                             <DialogTitle>Bulk Insert Companies</DialogTitle>
                         </DialogHeader>
-                        <CompanyBulkForm />
+                        <CompanyBulkForm onSubmit={handleBulkInsert}/>
                     </DialogContent>
                 </Dialog>
             </form>

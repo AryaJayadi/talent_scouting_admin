@@ -1,9 +1,11 @@
 export interface CompanyInsertCompanyBulkAPIRequest {
-    companyFile: File;
+    companyFile: File | null;
 }
 
-export function createCompanyInsertCompanyBulkAPIRequest(file: File) : CompanyInsertCompanyBulkAPIRequest {
+export function createCompanyInsertCompanyBulkAPIRequest(
+    file?: File
+) : CompanyInsertCompanyBulkAPIRequest {
     return {
-        companyFile: file,
+        companyFile: file ?? null,
     }
 }
