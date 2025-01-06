@@ -3,6 +3,7 @@ import {Company} from "@/domain/model/Company.ts";
 import axios from "axios";
 import {CompanyInsertCompanyAPIRequest} from "@/data/datasource/api/request/CompanyInsertCompanyAPIRequest.ts";
 import {CompanyAPIEntity} from "@/data/datasource/api/entity/CompanyAPIEntity.ts";
+import {CompanyInsertCompanyBulkAPIRequest} from "@/data/datasource/api/request/CompanyInsertCompanyBulkAPIRequest.ts";
 
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -87,12 +88,12 @@ export default class CompanyAPIDataSourceImpl implements CompanyDataSource {
         }
     }
 
-   async saveBulk(file: File): Promise<Company[]> {
+   async saveBulk(data: CompanyInsertCompanyBulkAPIRequest): Promise<Company[]> {
         try {
             const response = await this.axiosInstance({
                 method: "POST",
-                url: `/saveBulk`,
-                data: file
+                url: `/createCompanyBulk`,
+                data: data
             });
             return response.data;
         } catch (e) {
