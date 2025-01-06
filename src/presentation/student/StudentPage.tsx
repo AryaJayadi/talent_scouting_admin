@@ -10,7 +10,6 @@ import {StudentBulkForm} from "@/presentation/student/StudentBulkForm.tsx";
 
 export const StudentPage = () => {
     const {
-        loading,
         openDialog,
         setOpenDialog,
         openDialogBulk,

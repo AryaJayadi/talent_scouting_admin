@@ -98,7 +98,7 @@ export const BaseLayout = () => {
                         </NavigationMenuContent>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <Link legacyBehavior passHref to="/docs">
+                        <Link to="/docs">
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                                 Documentation
                             </NavigationMenuLink>

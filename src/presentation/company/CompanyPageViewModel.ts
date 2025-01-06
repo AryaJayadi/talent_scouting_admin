@@ -61,7 +61,7 @@ export default function CompanyPageViewModel() {
     }
 
     function handleEdit(data: CompanyInsertCompanyAPIRequest) {
-
+        console.log(data);
     }
 
     function handleBulkInsert(data: CompanyInsertCompanyBulkAPIRequest) {

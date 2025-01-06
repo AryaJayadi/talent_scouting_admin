@@ -11,7 +11,6 @@ interface Props {
 
 export const CompanyBulkForm: FC<Props> = (p) => {
     const {
-        formData,
         setFormData,
         handleSubmit,
     } = useViewModel(p)

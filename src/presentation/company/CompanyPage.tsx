@@ -10,7 +10,6 @@ import {CompanyBulkForm} from "@/presentation/company/CompanyBulkForm.tsx";
 
 export const CompanyPage = () => {
     const {
-        loading,
         openDialog,
         setOpenDialog,
         openDialogBulk,
