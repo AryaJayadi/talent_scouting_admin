@@ -2,6 +2,7 @@ import {CompanyRepository} from "@/domain/repository/CompanyRepository.ts";
 import CompanyDataSource from "@/data/datasource/CompanyDataSource.ts";
 import {Company} from "@/domain/model/Company.ts";
 import {CompanyInsertCompanyAPIRequest} from "@/data/datasource/api/request/CompanyInsertCompanyAPIRequest.ts";
+import {CompanyInsertCompanyBulkAPIRequest} from "@/data/datasource/api/request/CompanyInsertCompanyBulkAPIRequest.ts";
 
 export class CompanyRepositoryImpl implements CompanyRepository {
     private dataSource: CompanyDataSource;
@@ -22,8 +23,8 @@ export class CompanyRepositoryImpl implements CompanyRepository {
         return this.dataSource.get(id);
     }
 
-    insertBulkCompany(file: File): Promise<Company[]> {
-        return this.dataSource.saveBulk(file);
+    insertBulkCompany(data: CompanyInsertCompanyBulkAPIRequest): Promise<Company[]> {
+        return this.dataSource.saveBulk(data);
     }
 
     insertCompany(company: CompanyInsertCompanyAPIRequest): Promise<Company> {

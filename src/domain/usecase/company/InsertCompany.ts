@@ -1,6 +1,5 @@
 import {Company} from "@/domain/model/Company.ts";
 import {CompanyRepository} from "@/domain/repository/CompanyRepository.ts";
-import {CompanyAPIEntity} from "@/data/datasource/api/entity/CompanyAPIEntity.ts";
 import {CompanyInsertCompanyAPIRequest} from "@/data/datasource/api/request/CompanyInsertCompanyAPIRequest.ts";
 
 export interface InsertCompanyUseCase {
