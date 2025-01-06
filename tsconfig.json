@@ -7,6 +7,10 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
 
+    "declaration": true,
+    "declarationDir": "./types",
+    "outDir": "./dist",
+
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
@@ -27,12 +31,12 @@
     }
   },
   "include": ["src"],
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ],
+  // "references": [
+  //   {
+  //     "path": "./tsconfig.app.json"
+  //   },
+  //   {
+  //     "path": "./tsconfig.node.json"
+  //   }
+  // ],
 }
