@@ -9,7 +9,8 @@ import {useNavigate} from "react-router";
 import {useLocation} from "react-router-dom";
 
 export default function HomePageViewModel() {
-    const [value, setValue, removeValue] = useLocalStorage('token', '')
+    const [, setValue, ] = useLocalStorage('token', '')
+    // const [value, setValue, removeValue] = useLocalStorage('token', '')
     const navigate = useNavigate()
     const location = useLocation()
     const {toast} = useToast()

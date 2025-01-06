@@ -42,7 +42,8 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute: FC<ProtectedRouteProps> = (p) => {
-    const [value, setValue, removeValue] = useLocalStorage('token', '')
+    const [value, , ] = useLocalStorage('token', '')
+    // const [value, setValue, removeValue] = useLocalStorage('token', '')
     const location = useLocation()
 
     if (!p.isAuthenticated(value)) {
