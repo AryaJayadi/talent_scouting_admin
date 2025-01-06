@@ -79,7 +79,7 @@ export default class StudentAPIDataSourceImpl implements StudentDataSource {
 
             const response = await this.axiosInstance({
                 method: "POST",
-                url: "/",
+                url: "/createStudentBulk",
                 data: formData,
                 headers: {
                     "Content-Type": "multipart/form-data",
