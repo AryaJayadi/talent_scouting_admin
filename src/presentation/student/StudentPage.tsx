@@ -13,11 +13,14 @@ export const StudentPage = () => {
         loading,
         openDialog,
         setOpenDialog,
+        openDialogBulk,
+        setOpenDialogBulk,
         students,
         searchKeyword,
         setSearchKeyword,
         handleCreate,
         handleSearch,
+        handleInsertBulk,
     } = useViewModel()
 
     return (
@@ -47,7 +50,7 @@ export const StudentPage = () => {
                         <StudentForm onSubmit={handleCreate}/>
                     </DialogContent>
                 </Dialog>
-                <Dialog>
+                <Dialog open={openDialogBulk} onOpenChange={setOpenDialogBulk}>
                     <DialogTrigger asChild>
                         <Button variant="secondary">
                             <Upload className="mr-2 h-4 w-4" /> Insert Bulk
@@ -57,7 +60,7 @@ export const StudentPage = () => {
                         <DialogHeader>
                             <DialogTitle>Bulk Insert Companies</DialogTitle>
                         </DialogHeader>
-                        <StudentBulkForm />
+                        <StudentBulkForm onSubmit={handleInsertBulk}/>
                     </DialogContent>
                 </Dialog>
             </form>
