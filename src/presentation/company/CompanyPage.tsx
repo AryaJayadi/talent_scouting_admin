@@ -62,7 +62,7 @@ export const CompanyPage = () => {
                     </DialogTrigger>
                     <DialogContent>
                         <DialogHeader>
-                            <DialogTitle>Bulk Insert Students</DialogTitle>
+                            <DialogTitle>Bulk Insert Companies</DialogTitle>
                         </DialogHeader>
                         <CompanyBulkForm />
                     </DialogContent>

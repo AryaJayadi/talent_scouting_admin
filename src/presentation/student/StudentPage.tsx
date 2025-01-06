@@ -1,11 +1,12 @@
 import useViewModel from "./StudentPageViewModel.ts"
 import {Input} from "@/components/ui/input.tsx";
 import {Button} from "@/components/ui/button.tsx";
-import {Eye, FileEdit, Plus, Search, Trash} from "lucide-react";
+import {Eye, FileEdit, Plus, Search, Trash, Upload } from "lucide-react";
 import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger} from "@/components/ui/dialog.tsx";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table.tsx";
 import {StudentForm} from "@/presentation/student/StudentForm.tsx";
 import {Link} from "react-router-dom";
+import {StudentBulkForm} from "@/presentation/student/StudentBulkForm.tsx";
 
 export const StudentPage = () => {
     const {
@@ -44,6 +45,19 @@ export const StudentPage = () => {
                             <DialogTitle>Create New Student</DialogTitle>
                         </DialogHeader>
                         <StudentForm onSubmit={handleCreate}/>
+                    </DialogContent>
+                </Dialog>
+                <Dialog>
+                    <DialogTrigger asChild>
+                        <Button variant="secondary">
+                            <Upload className="mr-2 h-4 w-4" /> Insert Bulk
+                        </Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                        <DialogHeader>
+                            <DialogTitle>Bulk Insert Companies</DialogTitle>
+                        </DialogHeader>
+                        <StudentBulkForm />
                     </DialogContent>
                 </Dialog>
             </form>
