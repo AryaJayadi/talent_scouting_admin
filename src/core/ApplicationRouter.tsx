@@ -14,7 +14,7 @@ import {DashboardLayout} from "@/presentation/template/DashboardLayout.tsx";
 
 function isAuthenticated(token: string): boolean {
     if (!token) {
-        return true;
+        return false
     }
 
     try {
