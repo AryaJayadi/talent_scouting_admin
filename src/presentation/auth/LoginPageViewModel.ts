@@ -55,8 +55,8 @@ export default function HomePageViewModel() {
             description: `Welcome, ${res.email}!`,
         });
 
-        emailRef.current['value'] = null;
-        passRef.current['value'] = null;
+        emailRef.current['value'] = "";
+        passRef.current['value'] = "";
 
         setValue(res.token)
 

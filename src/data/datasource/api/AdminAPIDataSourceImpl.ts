@@ -1,7 +1,6 @@
 import AdminDataSource from "@/data/datasource/AdminDataSource.ts";
 import {Admin} from "@/domain/model/Admin.ts";
 import axios from "axios";
-import {AdminAPIEntity} from "@/data/datasource/api/entity/AdminAPIEntity.ts";
 import {AdminLoginAdminAPIRequest} from "@/data/datasource/api/request/AdminLoginAdminAPIRequest.ts";
 
 const BASE_URL = import.meta.env.VITE_BACKEND_URL + "/user";
@@ -19,11 +18,11 @@ export default class AdminAPIDataSourceImpl implements AdminDataSource {
             }
 
             if(resp) {
-                if(resp.length)
-                return resp.data.map((item: AdminAPIEntity): Admin => ({
-                    id: item.id,
-                    name: item.name,
-                }))
+                // if(resp.length)
+                // return resp.data.map((item: AdminAPIEntity): Admin => ({
+                //     id: item.id,
+                //     name: item.name,
+                // }))
                 return resp
             }
         }],
