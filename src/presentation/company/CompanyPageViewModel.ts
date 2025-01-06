@@ -52,6 +52,10 @@ export default function CompanyPageViewModel() {
         deleteCompany(id).then(() => setLoading(true));
     }
 
+    function handleEdit(data: CompanyInsertCompanyAPIRequest) {
+
+    }
+
     return {
         loading,
         openDialog,
@@ -59,5 +63,6 @@ export default function CompanyPageViewModel() {
         companies,
         handleCreate,
         handleDelete,
+        handleEdit,
     }
 }

@@ -6,7 +6,7 @@ import {
 } from "@/data/datasource/api/request/CompanyInsertCompanyAPIRequest.ts";
 
 interface Props {
-    company: Company,
+    company?: Company,
     onSubmit: (data: CompanyInsertCompanyAPIRequest) => void
 }
 

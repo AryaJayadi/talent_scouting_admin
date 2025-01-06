@@ -15,6 +15,7 @@ export const CompanyPage = () => {
         companies,
         handleCreate,
         handleDelete,
+        handleEdit,
     } = useViewModel()
 
     return (
@@ -87,7 +88,7 @@ export const CompanyPage = () => {
                                                 <DialogHeader>
                                                     <DialogTitle>Edit Company</DialogTitle>
                                                 </DialogHeader>
-                                                <CompanyForm company={company}/>
+                                                <CompanyForm company={company} onSubmit={handleEdit}/>
                                                 {/*<CompanyForm company={company} onSubmit={handleEdit}/>*/}
                                             </DialogContent>
                                         </Dialog>

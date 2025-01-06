@@ -7,7 +7,7 @@ import {CompanyInsertCompanyAPIRequest} from "@/data/datasource/api/request/Comp
 import {FC} from "react";
 
 interface Props {
-    company: Company,
+    company?: Company,
     onSubmit: (data: CompanyInsertCompanyAPIRequest) => void
 }
 
