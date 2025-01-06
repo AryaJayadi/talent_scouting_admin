@@ -90,10 +90,20 @@ export default class CompanyAPIDataSourceImpl implements CompanyDataSource {
 
    async saveBulk(data: CompanyInsertCompanyBulkAPIRequest): Promise<Company[]> {
         try {
+            if (!data.companyFile) {
+                throw new Error("No file provided");
+            }
+
+            const formData = new FormData();
+            formData.append("companyFile", data.companyFile);
+
             const response = await this.axiosInstance({
                 method: "POST",
                 url: `/createCompanyBulk`,
-                data: data
+                data: formData,
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
             });
             return response.data;
         } catch (e) {

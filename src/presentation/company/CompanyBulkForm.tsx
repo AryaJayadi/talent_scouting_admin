@@ -17,9 +17,6 @@ export const CompanyBulkForm: FC<Props> = (p) => {
     } = useViewModel(p)
 
     return (
-        // <div className="grid w-full max-w-sm items-center gap-1.5">
-        //
-        // </div>
         <form onSubmit={handleSubmit} className="space-y-4">
             <Label htmlFor="companyFile">Upload CSV File</Label>
             <Input
@@ -29,10 +26,15 @@ export const CompanyBulkForm: FC<Props> = (p) => {
                 onChange={(e) => {
                     const file = e.target.files?.[0];
                     if (file) {
-                        setFormData({...formData, companyFile: file});
+                        console.log("Selected file:", file);
+                        setFormData((prevFormData) => {
+                            const updatedFormData = { ...prevFormData, companyFile: file };
+                            console.log("Updated formData:", updatedFormData); // Log updated state
+                            return updatedFormData;
+                        });
                     } else {
                         console.warn("No file selected");
-                        setFormData({...formData, companyFile: null});
+                        setFormData((prevFormData) => ({ ...prevFormData, companyFile: null }));
                     }
                 }}
             />
