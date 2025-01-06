@@ -22,7 +22,7 @@ export const CompanyBulkForm: FC<Props> = (p) => {
             <Input
                 id="companyFile"
                 type="file"
-                accept=".csv"
+                accept=".csv, .xlsx"
                 onChange={(e) => {
                     const file = e.target.files?.[0];
                     if (file) {
