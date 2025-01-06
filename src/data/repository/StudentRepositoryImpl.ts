@@ -3,6 +3,8 @@ import {Student} from "@/domain/model/Student.ts";
 import StudentDataSource from "@/data/datasource/StudentDataSource.ts";
 import {StudentGetByFilterAPIRequest} from "@/data/datasource/api/request/StudentGetByFilterAPIRequest.ts";
 import {StudentInsertStudentAPIRequest} from "@/data/datasource/api/request/StudentInsertStudentAPIRequest.ts";
+import {data} from "autoprefixer";
+import {StudentInsertStudentBulkAPIRequest} from "@/data/datasource/api/request/StudentInsertStudentBulkAPIRequest.ts";
 
 export class StudentRepositoryImpl implements StudentRepository {
     private datasource: StudentDataSource;
@@ -21,5 +23,9 @@ export class StudentRepositoryImpl implements StudentRepository {
 
     insertStudent(data: StudentInsertStudentAPIRequest): Promise<Student> {
         return this.datasource.save(data);
+    }
+
+    insertStudents(data: StudentInsertStudentBulkAPIRequest): Promise<Student[]> {
+        return this.datasource.saveBulk(data)
     }
 }

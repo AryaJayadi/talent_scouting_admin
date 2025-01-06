@@ -3,6 +3,7 @@ import {Student} from "@/domain/model/Student.ts";
 import axios from "axios";
 import {StudentGetByFilterAPIRequest} from "@/data/datasource/api/request/StudentGetByFilterAPIRequest.ts";
 import {StudentInsertStudentAPIRequest} from "@/data/datasource/api/request/StudentInsertStudentAPIRequest.ts";
+import {StudentInsertStudentBulkAPIRequest} from "@/data/datasource/api/request/StudentInsertStudentBulkAPIRequest.ts";
 
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -59,6 +60,30 @@ export default class StudentAPIDataSourceImpl implements StudentDataSource {
                 method: "POST",
                 url: "/",
                 data: data,
+            });
+            return response.data;
+        } catch (e) {
+            console.log(e);
+            throw(e);
+        }
+    }
+
+    async saveBulk(data: StudentInsertStudentBulkAPIRequest): Promise<Student[]> {
+        try {
+            if (!data.studentFile) {
+                throw new Error("No file provided");
+            }
+
+            const formData = new FormData();
+            formData.append("studentFile", data.studentFile);
+
+            const response = await this.axiosInstance({
+                method: "POST",
+                url: "/",
+                data: formData,
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
             });
             return response.data;
         } catch (e) {
